@@ -3,10 +3,11 @@
   {{#events}}
     <li>
         <h2>{{ title }}</h2>
-        {{!-- code to display images goes here --}}
+       
         <p>{{ description }}</p>
         <p>Location: {{ location }}</p>
         <p>Likes: {{ likes }}
+        
         <form method="POST" action="/event/like">
         <input type="hidden" value="{{id}}" name="id">
         <input type="submit" value="Like">
@@ -15,6 +16,10 @@
         <input type="hidden" value="{{id}}" name="id">
         <input type="submit" value="UN-Like">
         </form>
+        <p>
+            {{#if image}}
+            <img src="https://storage.googleapis.com/{{../bucket}}/{{image}}" />
+            {{/if}}
         </p>
     </li>
   {{/events}}
@@ -29,4 +34,9 @@
        jpeg image: <input type="file" name="image" id="image" value="" /> <br />
         <input type="submit" name="submit" value="submit" />
     </form>
+  
   </div>
+  <div>
+    <a href="/approval">Approvals</a>
+</div>
+  
